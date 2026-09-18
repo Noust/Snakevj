@@ -33,6 +33,14 @@ def inside(head):
     """Return True if head inside boundaries."""
     return -200 < head.x < 190 and -200 < head.y < 190
 
+def move_food():
+    """Move food one random step, keeping it inside the window."""
+    dx, dy = random.choice([(10, 0), (-10, 0), (0, 10), (0, -10)])
+    candidate = vector(food.x + dx, food.y + dy)
+
+    if inside(candidate):
+        food.x = candidate.x
+        food.y = candidate.y
 
 def move():
     """Move snake forward one segment."""
@@ -53,6 +61,7 @@ def move():
     else:
         snake.pop(0)
 
+    move_food()
     clear()
 
     for body in snake:
