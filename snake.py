@@ -7,7 +7,7 @@ Exercises
 3. How would you move the food?
 4. Change the snake to respond to mouse clicks.
 """
-
+import random
 from random import randrange
 from turtle import *
 
@@ -17,6 +17,11 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+colors=['gray','blue','yellow','purple','green']
+snakecol=random.choice(colors)
+fruitcol=random.choice(colors)
+if snakecol==fruitcol:
+    fruitcol==randomchoice(colors)
 
 def change(x, y):
     """Change snake direction."""
@@ -51,9 +56,9 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, snakecol)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, fruitcol)
     update()
     ontimer(move, 100)
 
